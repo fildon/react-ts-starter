@@ -1,0 +1,46 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+
+env:
+  NODE_VERSION: "18.x"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 🤖 Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
+      - name: 📥 Install deps
+        run: npm ci
+
+      - name: ✨ npm lint
+        run: npm run lint
+
+      - name: 🧪 npm test
+        run: npm run test
+
+      - name: 🚧 npm build
+        run: npm run build
+
+      - name: 🚀 Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages
+          folder: dist
