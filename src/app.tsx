@@ -6,7 +6,12 @@ export const App = () => {
 	return (
 		<main className="stack center">
 			<h1>Hello world</h1>
-			<span>Click the button to prove React is working</span>
+			<p>
+				This project is intended as a React/TypeScript starter template. You can
+				see the source here:{" "}
+				<a href="https://github.com/fildon/react-ts-starter/">react-ts-starter</a>
+			</p>
+			<span>Click the button to prove React is working. If the number goes up, then everything is good 👍</span>
 			<button
 				onClick={() => {
 					setCount((c) => c + 1);
