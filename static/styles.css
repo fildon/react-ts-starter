@@ -1,8 +1,55 @@
 /* CUBE */
 
 /* Global */
+:root {
+	/* spacing */
+	--measure: 60ch;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+}
+html,
+body,
+header {
+	line-height: var(--s1);
+	margin: 0;
+	max-width: none;
+	padding: 0;
+}
+body {
+	margin: auto;
+}
+
+main * {
+	max-width: var(--measure);
+}
+
+section {
+	border: 1px solid black;
+}
 
 /* Composition */
+.stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.stack > * {
+	margin-block: 0;
+}
+
+.stack > * + * {
+	margin-block-start: var(--space, 1.5rem);
+}
+
+.center {
+	box-sizing: content-box;
+	margin-inline: auto;
+	max-inline-size: var(--measure);
+}
 
 /* Utility */
 

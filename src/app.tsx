@@ -4,7 +4,7 @@ export const App = () => {
 	const [count, setCount] = useState(0);
 
 	return (
-		<>
+		<main className="stack center">
 			<h1>Hello world</h1>
 			<span>Click the button to prove React is working</span>
 			<button
@@ -14,6 +14,6 @@ export const App = () => {
 			>
 				{count}
 			</button>
-		</>
+		</main>
 	);
 };
