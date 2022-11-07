@@ -25,7 +25,7 @@
 		"import/order": [
 			"warn",
 			{
-        "newlines-between": "always",
+				"newlines-between": "always",
 				"groups": [
 					"builtin",
 					"external",
